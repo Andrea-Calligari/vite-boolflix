@@ -2,52 +2,66 @@
 import AppHeader from './components/AppHeader.vue';
 import AppContent from './components/AppContent.vue';
 import axios from 'axios';
+import { store } from '../src/store';
 
 
-let api_key = 'aee8abb5e92b485f2f2a264464ed0c94';
-let query = '';
 
 export default {
   data() {
     return {
-
-
+      store
     }
   },
-  
   components: {
     AppHeader,
     AppContent
   },
 
   methods: {
-    fetchFilm() {
+    SearchingContents() {
       axios.get('https://api.themoviedb.org/3/search/movie',
         {
           params: {
-            api_key,
-            query
+            api_key: store.api_key,
+            query: store.inputSearch
 
           },
         }).then((res) => {
-          console.log(res.data.result)
+          store.movieResults = res.data.results
+          console.log( store.movieResults)
 
 
+          axios.get('https://api.themoviedb.org/3/search/tv',
+            {
+              params: { 
+                api_key: store.api_key,
+                query: store.inputSearch
+              }
+            }).then((res) => {
+              store.tvSeriesResults = res.data.results
+              console.log( store.tvSeriesResults)
+            })
         })
+
+    },
+    getImage(){
+      
+      
     }
   },
-  created() {
-    this.fetchFilm()
 
-  }
 
 }
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader @search="SearchingContents()"/>
+  
   <AppContent />
 
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+@use './style/partials/reset';
+@use 'bootstrap';
+</style>
