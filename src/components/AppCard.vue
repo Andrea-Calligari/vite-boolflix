@@ -38,7 +38,7 @@ export default {
 
 
 <template>
-    <li class="col-3 p-4 ">
+    <li class="col-4 p-3 ">
         <div class="container">
             <div class="position-relative">
                 <img  :src="`//image.tmdb.org/t/p/w300/${item.image}`" alt="">
