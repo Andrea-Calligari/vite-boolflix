@@ -19,7 +19,7 @@ export default {
          },
          getFlagPath(language) {
             if(language === 'it'){
-                return '../public/italia.png';
+                return '/italia.png';
             }else if(language === 'en'){
                 return '/england.webp';
 
@@ -41,7 +41,8 @@ export default {
     <li class="col-4 p-3 ">
         <div class="container">
             <div class="position-relative">
-                <img  :src="`//image.tmdb.org/t/p/w300/${item.image}`" alt="">
+                <img v-if="item.image !== null" :src="`//image.tmdb.org/t/p/w300/${item.image}`" alt="">
+                <img v-else src="https://th.bing.com/th/id/OIP.Lz0yUk1SkNMSnW5p0wMXKgHaHa?rs=1&pid=ImgDetMain" alt="">
                 <div class="overlay">
                     <h1 class="fs-4">Titolo:  {{ item.name }}</h1>
                     <h1 class="fs-4">Titolo Originale:  {{ item.title }}</h1> 
@@ -62,6 +63,7 @@ export default {
 
 
 <style scoped lang="scss">
+
 .overlay:hover{
     opacity: 1;
     background-color: rgba(59, 57, 57, 0.9);
@@ -83,6 +85,11 @@ export default {
         margin-bottom: 30px;
     }
     
+}
+.overimage{
+    background-image: url('https://th.bing.com/th/id/OIP.by7qrmZIfN12yYln_GtT4QAAAA?rs=1&pid=ImgDetMain');
+    background-size: cover;
+    background-position: center;
 }
 .logo{
     width: 50px;

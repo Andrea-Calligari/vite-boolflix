@@ -30,6 +30,9 @@ export default {
         }).then((res) => {
           const results = res.data.results;
 
+          if (this.store.movieResults.length !== 0) {
+            this.store.movieResults = []
+          }
           for (let i = 0; i < results.length; i++) {
             let tmp = {
               title: results[i].original_title,
@@ -58,6 +61,10 @@ export default {
             }).then((res) => {
               const results = res.data.results
 
+              if (this.store.tvSeriesResults.length !== 0) {
+                this.store.tvSeriesResults = []
+              }
+
               for (let i = 0; i < results.length; i++) {
                 const tmp = {
                   title: results[i].original_name,
@@ -72,6 +79,7 @@ export default {
                   tmp
                 );
               }
+              this.store.inputSearch = ''
               // console.log( store.tvSeriesResults)
             })
         })
@@ -82,7 +90,7 @@ export default {
 </script>
 
 <template>
-  
+
   <AppHeader @search="SearchingContents()" />
   <AppContent />
 
@@ -91,8 +99,9 @@ export default {
 <style lang="scss">
 @use './style/partials/reset';
 @use 'bootstrap';
-#app{
-  background: rgb(230,0,0);
-background: radial-gradient(circle, rgba(230,0,0,0.742734593837535) 30%, rgba(13,13,13,0.8599089293920693) 100%);
+
+#app {
+  background: rgb(230, 0, 0);
+  background: radial-gradient(circle, rgba(230, 0, 0, 0.742734593837535) 30%, rgba(13, 13, 13, 0.5599089293920693) 100%);
 }
 </style>
