@@ -11,31 +11,31 @@ export default {
     components: {
         AppCard,
     }
-
-
 }
 
 </script>
 
 <template>
     <main>
-        <section class="movie__section  ">
-            <h1 class="text-center p-2">Section Film</h1>
+        <section class="section ">
             <ul class="row justify-contenty-center align-items-center p-5" v-if="store.movieResults.length !== 0">
-                <AppCard class="" v-for="movie in store.movieResults" :key="movie.id" :item="movie" />
+                <div class="text-center text-light p-5"><h1>Films</h1></div>
+                <AppCard  v-for="movie in store.movieResults" :key="movie.id" :item="movie"  />
+                <div class="text-center text-light p-5"><h1>Series Tv</h1></div>
+                <AppCard  v-for="tv in store.tvSeriesResults" :key="tv.id" :item="tv"  />
+
             </ul>
         </section>
-        <!-- <section class="tv__section  ">
-            <h1>Section seires Tv</h1>
-            <ul class="row p-5" v-if="store.tvSeriesResults.length !== 0">
-                <AppCard class="p-3" v-for="movie in store.tvSeriesResults" :key="tv.id" :pass="tv" />
-            </ul>
-        </section> -->
-
-
     </main>
-
 </template>
 
+
 <style scoped lang="scss">
-// @use '../style/general' ;</style>
+// @use '../style/general' 
+.section{
+    background: rgb(230,0,0);
+    background: linear-gradient(0deg, rgba(230,0,0,0.742734593837535) 8%, rgba(13,13,13,0.9444152661064426) 81%);
+
+   
+}
+</style>

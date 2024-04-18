@@ -19,50 +19,80 @@ export default {
 
   methods: {
     SearchingContents() {
+      // API MOVIE
       axios.get('https://api.themoviedb.org/3/search/movie',
         {
           params: {
-            api_key: store.api_key,
-            query: store.inputSearch
+            api_key: this.store.api_key,
+            query: this.store.inputSearch
 
           },
         }).then((res) => {
-          store.movieResults = res.data.results
-          console.log( store.movieResults)
+          const results = res.data.results;
+
+          for (let i = 0; i < results.length; i++) {
+            let tmp = {
+              title: results[i].original_title,
+              name: results[i].title,
+              rating: Math.floor(results[i].vote_average / 2),
+              id: results[i].id,
+              image: results[i].poster_path,
+              language: results[i].original_language
+            };
+
+            this.store.movieResults.push(
+              tmp
+            );
+          }
 
 
+          // console.log(this.store.movieResults)
+
+          // API SERIE TV
           axios.get('https://api.themoviedb.org/3/search/tv',
             {
-              params: { 
-                api_key: store.api_key,
-                query: store.inputSearch
+              params: {
+                api_key: this.store.api_key,
+                query: this.store.inputSearch
               }
             }).then((res) => {
-              store.tvSeriesResults = res.data.results
-              console.log( store.tvSeriesResults)
+              const results = res.data.results
+
+              for (let i = 0; i < results.length; i++) {
+                const tmp = {
+                  title: results[i].original_name,
+                  name: results[i].name,
+                  rating: Math.floor(results[i].vote_average / 2),
+                  id: results[i].id,
+                  image: results[i].poster_path,
+                  language: results[i].original_language
+                };
+
+                this.store.tvSeriesResults.push(
+                  tmp
+                );
+              }
+              // console.log( store.tvSeriesResults)
             })
         })
 
-    },
-    getImage(){
-      
-      
     }
-  },
-
-
+  }
 }
 </script>
 
 <template>
-  <AppHeader @search="SearchingContents()"/>
   
+  <AppHeader @search="SearchingContents()" />
   <AppContent />
 
 </template>
 
 <style lang="scss">
 @use './style/partials/reset';
-// @use './style/partials/layout';
- @use 'bootstrap';
+@use 'bootstrap';
+#app{
+  background: rgb(230,0,0);
+background: radial-gradient(circle, rgba(230,0,0,0.742734593837535) 30%, rgba(13,13,13,0.8599089293920693) 100%);
+}
 </style>
