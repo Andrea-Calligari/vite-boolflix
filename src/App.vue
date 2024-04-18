@@ -63,5 +63,6 @@ export default {
 
 <style lang="scss">
 @use './style/partials/reset';
-@use 'bootstrap';
+// @use './style/partials/layout';
+ @use 'bootstrap';
 </style>
