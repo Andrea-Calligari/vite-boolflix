@@ -40,7 +40,9 @@ export default {
               rating: Math.floor(results[i].vote_average / 2),
               id: results[i].id,
               image: results[i].poster_path,
-              language: results[i].original_language
+              language: results[i].original_language,
+              backdrop: results[i].backdrop_path
+
             };
 
             this.store.movieResults.push(
@@ -49,7 +51,7 @@ export default {
           }
 
 
-          // console.log(this.store.movieResults)
+          console.log(results, 'movie')
 
           // API SERIE TV
           axios.get('https://api.themoviedb.org/3/search/tv',
@@ -72,7 +74,8 @@ export default {
                   rating: Math.floor(results[i].vote_average / 2),
                   id: results[i].id,
                   image: results[i].poster_path,
-                  language: results[i].original_language
+                  language: results[i].original_language,
+                  backdrop: results[i].backdrop_path
                 };
 
                 this.store.tvSeriesResults.push(
@@ -80,7 +83,7 @@ export default {
                 );
               }
               this.store.inputSearch = ''
-              // console.log( store.tvSeriesResults)
+              console.log(results)
             })
         })
 
@@ -90,9 +93,12 @@ export default {
 </script>
 
 <template>
+  <div class="bg">
 
-  <AppHeader @search="SearchingContents()" />
-  <AppContent />
+    <AppHeader @search="SearchingContents()" />
+    <AppContent />
+
+  </div>
 
 </template>
 
@@ -100,8 +106,7 @@ export default {
 @use './style/partials/reset';
 @use 'bootstrap';
 
-#app {
-  background: rgb(230, 0, 0);
-  background: radial-gradient(circle, rgba(230, 0, 0, 0.742734593837535) 30%, rgba(13, 13, 13, 0.5599089293920693) 100%);
+body {
+  background: rgba(253, 195, 45, 0.954)
 }
 </style>

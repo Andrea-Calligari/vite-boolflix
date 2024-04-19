@@ -9,7 +9,7 @@ export default {
 
         }
     },
-    components:{
+    components: {
         AppSearchBar,
     }
 }
@@ -17,8 +17,7 @@ export default {
 </script>
 
 <template>
-    <AppSearchBar/>
+    <AppSearchBar />
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

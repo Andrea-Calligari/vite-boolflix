@@ -1,9 +1,9 @@
 <script>
-import { store} from '../store'
+import { store } from '../store'
 
-export default{
-    data(){
-        return{
+export default {
+    data() {
+        return {
             store
         }
     }
@@ -12,15 +12,17 @@ export default{
 </script>
 
 <template>
-     <header class="header_page ">
+    <header class="header_page ">
         <div class="container">
             <div class="row align-items-center ">
                 <div class="col-6">
-                    <h1 >Boolflix</h1>
+                    <h1>&clubs; Boolflix &clubs;</h1>
                 </div>
                 <div class="col-6 d-flex gap-2 ">
-                    <input  class="form-control mr-sm-2" @keyup.enter="$emit('search')" v-model.trim="store.inputSearch" type="text" placeholder="Cerca un Film o una Serie Tv...">
-                    <button  class="btn btn-danger" @click="$emit('search')" type="submit" value="Cerca">Cerca</button>
+                    <input class="form-control mr-sm-2" @keyup.enter="$emit('search')" v-model.trim="store.inputSearch"
+                        type="text" placeholder="Cerca un Film o una Serie Tv...">
+                    <button class="btn btn-outline-danger" @click="$emit('search')" type="button"
+                        value="Cerca">Cerca</button>
                 </div>
             </div>
         </div>
@@ -30,14 +32,16 @@ export default{
 
 <style scoped lang="scss">
 .header_page {
-    padding: 16px ;
-    background: rgb(230,0,0);
-background: radial-gradient(circle, rgba(230,0,0,0.742734593837535) 30%, rgba(13,13,13,0.8599089293920693) 100%);
+    width: 100vw;
+    padding: 16px;
+    background: rgb(195, 117, 34);
+    background: linear-gradient(180deg, rgba(195, 117, 34, 1) 0%, rgba(253, 195, 45, 1) 100%);
 
     h1 {
         font-size: 60px;
-        color: white;
+
     }
+
 }
 
 .d-flex {
@@ -46,10 +50,7 @@ background: radial-gradient(circle, rgba(230,0,0,0.742734593837535) 30%, rgba(13
 }
 
 input[type="text"] {
-  min-width: 80%;
-  padding: 4px;
+    min-width: 80%;
+    padding: 4px;
 }
-
-
-
 </style>
