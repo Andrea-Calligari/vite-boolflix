@@ -27,6 +27,8 @@ export default {
                 return '/esp.png';
 
             }
+
+            return null;
         }
     }
 
@@ -59,7 +61,6 @@ export default {
                             <figcaption>Retro-copertina:</figcaption>
                             <img v-if="item.backdrop !== null" :src="`//image.tmdb.org/t/p/w400/${item.backdrop}`"
                                 alt="">
-
                         </figure>
                     </li>
                     <li><span>Voto:</span></li>

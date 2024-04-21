@@ -16,7 +16,7 @@ export default {
         <div class="container">
             <div class="row align-items-center ">
                 <div class="col-6">
-                    <h1>&clubs; Boolflix &clubs;</h1>
+                    <h1> Boolflix &#128039;</h1>
                 </div>
                 <div class="col-6 d-flex gap-2 ">
                     <input class="form-control mr-sm-2" @keyup.enter="$emit('search')" v-model.trim="store.inputSearch"
