@@ -7,6 +7,7 @@ export const store = reactive({
    inputSearch: '',
    movieResults: [],
    tvSeriesResults: [],
+   
 
    SearchingContents() {
       // API MOVIE
@@ -77,5 +78,6 @@ export const store = reactive({
                })
          })
 
-   }
+   },
+   
 })

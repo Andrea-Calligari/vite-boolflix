@@ -21,7 +21,7 @@ export default {
                 <div class="col-6 d-flex gap-2 ">
                     <input class="form-control mr-sm-2" @keyup.enter="$emit('search')" v-model.trim="store.inputSearch"
                         type="text" placeholder="Cerca un Film o una Serie Tv...">
-                    <button class="btn btn-outline-danger" @click="$emit('search')" type="button"
+                    <button :class="store.inputSearch.length === 0 ? 'disabled' : ''"  class="btn btn-outline-danger " @click="$emit('search')" type="button"
                         value="Cerca">Cerca</button>
                 </div>
             </div>
@@ -52,5 +52,9 @@ export default {
 input[type="text"] {
     min-width: 80%;
     padding: 4px;
+}
+.disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 </style>
